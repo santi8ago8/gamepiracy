@@ -1,0 +1,14 @@
+body {
+  padding: 10px;
+  font: 14px Helvetica, "Lucida Grande", Arial, sans-serif;
+}
+a {
+  color: #00b7ff;
+}
+.content {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+}

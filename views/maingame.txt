@@ -1,0 +1,19 @@
+<script type='text/template' id="main" >
+.start
+    h2
+        span Salva los artistas
+        br
+        br
+        br
+    img(src='/images/click.png')
+
+.piracy
+
+.persons
+</script>
+
+<script type='text/template' id="person1" >
+img(src='/images/batero1.png',class='batero1 batero')
+img(src='/images/bajista1.png',class='bajista1 bajista')
+img(src='/images/cantante1.png',class='cantante1 cantante')
+</script>

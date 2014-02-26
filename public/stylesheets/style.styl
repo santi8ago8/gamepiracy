@@ -1,22 +1,48 @@
 body
   padding: 10px
   font: 14px Helvetica, "Lucida Grande", Arial, sans-serif
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 
 a
   color: #00B7FF
 
-paddcontent=0px
+paddcontent = 0px
 .content
   position: absolute;
   top: paddcontent
   left: paddcontent
   right: paddcontent
   bottom: paddcontent
-
+  overflow: hidden
 .contentLoaded
   background-image url("/images/fondo_.jpg")
   background-position center bottom
   background-size auto 100%
+
+.persons
+  position: absolute;
+  top: paddcontent
+  left: paddcontent
+  bottom: paddcontent
+  background-color black
+  transition: right 100ms
+  img
+    position absolute
+    transition left 100ms
+  .bajista1
+    max-height: 95%;
+    bottom: 8px;
+  .batero1
+    max-height 75%
+    bottom 10px;
+  .cantante1
+    max-height 96%
+    bottom 10px;
 
 .piracy
   position: absolute;
@@ -34,8 +60,10 @@ paddcontent=0px
   position absolute
   text-align center
   h2
+    span
+      font-size 40px;
     position absolute
-    top 25%
+    top 10%
     left 0
     right 0
     font-size 30px

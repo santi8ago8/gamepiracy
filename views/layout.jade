@@ -4,9 +4,11 @@ html
         title Anti Piracy Game
         meta(name="viewport", content="width=device-width,user-scalable=no")
         link(rel='stylesheet', href='/stylesheets/style.css')
+
+        include maingame.txt
+
     body
         block content
-        script(src='/javascripts/runtime.js',type='text/javascript')
+        script(src='/javascripts/jade.js',type='text/javascript')
         script(src='/javascripts/boq.js',type='text/javascript')
-        script(src='/javascripts/maingame.js',type='text/javascript')
         script(src='/javascripts/engine.js',type='text/javascript')

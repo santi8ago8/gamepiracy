@@ -1,6 +1,12 @@
 body {
   padding: 10px;
   font: 14px Helvetica, "Lucida Grande", Arial, sans-serif;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 a {
   color: #00b7ff;
@@ -11,11 +17,36 @@ a {
   left: 0px;
   right: 0px;
   bottom: 0px;
+  overflow: hidden;
 }
 .contentLoaded {
   background-image: url("/images/fondo_.jpg");
   background-position: center bottom;
   background-size: auto 100%;
+}
+.persons {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  background-color: #000;
+  transition: right 100ms;
+}
+.persons img {
+  position: absolute;
+  transition: left 100ms;
+}
+.persons .bajista1 {
+  max-height: 95%;
+  bottom: 8px;
+}
+.persons .batero1 {
+  max-height: 75%;
+  bottom: 10px;
+}
+.persons .cantante1 {
+  max-height: 96%;
+  bottom: 10px;
 }
 .piracy {
   position: absolute;
@@ -35,11 +66,14 @@ a {
 }
 .start h2 {
   position: absolute;
-  top: 25%;
+  top: 10%;
   left: 0;
   right: 0;
   font-size: 30px;
   color: #fff;
+}
+.start h2 span {
+  font-size: 40px;
 }
 .start img {
   position: absolute;

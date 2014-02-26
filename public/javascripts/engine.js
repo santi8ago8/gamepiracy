@@ -33,6 +33,18 @@ Boq.utils.qs.adds.css = function (name, value) {
     });
     return this;
 };
+Boq.utils.qs.adds.hide = function () {
+    this.each(function (it) {
+        it.style.display = 'none';
+    });
+    return this;
+};
+Boq.utils.qs.adds.show = function () {
+    this.each(function (it) {
+        it.style.display = '';
+    });
+    return this;
+};
 
 var Game = function () {
     var content = b.u.qs('.content');
@@ -48,9 +60,20 @@ var Game = function () {
         content.f().classList.add('contentLoaded');
         piracy = content.qs('.piracy');
 
-        init();
+        initIntro();
+
     };
-    var init = function () {
+    var initIntro = function () {
+        content.qs('.start').show();
+        content.f().addEventListener('click', startListener);
+    };
+    var startListener = function () {
+        initGame();
+    };
+    var initGame = function () {
+        content.qs('.start').hide();
+        content.f().removeEventListener('click', startListener);
+
         currentPiracy = 100;
         while (i = intPiracy.pop()) {
             clearInterval(i);
@@ -81,14 +104,30 @@ var Game = function () {
     };
     var updatePiracy = function (n) {
         currentPiracy += n;
-        if (currentPiracy < 50) {
-
-        }
         if (currentPiracy < 0) {
             end();
+            piracy.css('right', '0%');
         } else {
+            if (currentPiracy > 100)
+                currentPiracy = 99;
             piracy.css('right', currentPiracy + '%');
         }
+        updateMusicians();
+    };
+    var updateMusicians = function () {
+
+        if (currentPiracy > 75) {
+            //completos
+
+        } else if (currentPiracy > 50) {
+            //mirando costado
+
+        } else {
+            //empujando pared
+
+        }
+
+
     };
 
     load();

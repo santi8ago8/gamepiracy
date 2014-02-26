@@ -25,3 +25,24 @@ a {
   background-color: #000;
   transition: right 100ms;
 }
+.start {
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  position: absolute;
+  text-align: center;
+}
+.start h2 {
+  position: absolute;
+  top: 25%;
+  left: 0;
+  right: 0;
+  font-size: 30px;
+  color: #fff;
+}
+.start img {
+  position: absolute;
+  top: 40%;
+  left: calc(50% - 64px);
+}

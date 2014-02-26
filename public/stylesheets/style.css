@@ -13,7 +13,7 @@ a {
   bottom: 0px;
 }
 .contentLoaded {
-  background-image: url("/images/fondo.jpg");
+  background-image: url("/images/fondo_.jpg");
   background-position: center bottom;
   background-size: auto 100%;
 }
@@ -23,4 +23,5 @@ a {
   left: 0px;
   bottom: 0px;
   background-color: #000;
+  transition: right 100ms;
 }

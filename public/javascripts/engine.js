@@ -36,13 +36,60 @@ Boq.utils.qs.adds.css = function (name, value) {
 
 var Game = function () {
     var content = b.u.qs('.content');
+    var piracy;
+    var currentPiracy = 100;
+    var decrement = -.3;
+    var decclick = 3;
+    var intPiracy = b.Array();
+    var initDate;
     var load = function () {
 
         content.html(template());
         content.f().classList.add('contentLoaded');
+        piracy = content.qs('.piracy');
 
+        init();
     };
+    var init = function () {
+        currentPiracy = 100;
+        while (i = intPiracy.pop()) {
+            clearInterval(i);
+        }
+        piracy.css('right', piracy + '%');
 
+        intPiracy.push(setInterval(function () {
+            decrement -= .3;
+        }, 1000));
+        intPiracy.push(setInterval(movePiracy, 100));
+        content.f().addEventListener('click', backPiracy);
+        initDate = Date.now();
+    };
+    var movePiracy = function () {
+        updatePiracy(decrement);
+    };
+    var end = function () {
+        var finalScore = Date.now() - initDate;
+        while (i = intPiracy.pop()) {
+            clearInterval(i);
+        }
+        content.f().removeEventListener('click', backPiracy);
+        updatePiracy(1000);
+        b.u.debug('end', finalScore);
+    };
+    var backPiracy = function () {
+        updatePiracy(decclick);
+    };
+    var updatePiracy = function (n) {
+        currentPiracy += n;
+        if (currentPiracy < 50) {
+
+        }
+        if (currentPiracy < 0) {
+            end();
+        } else {
+            piracy.css('right', currentPiracy + '%');
+        }
+    };
 
     load();
 };

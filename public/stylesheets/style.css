@@ -7,8 +7,20 @@ a {
 }
 .content {
   position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+.contentLoaded {
+  background-image: url("/images/fondo.jpg");
+  background-position: center bottom;
+  background-size: auto 100%;
+}
+.piracy {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  background-color: #000;
 }

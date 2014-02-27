@@ -59,28 +59,28 @@ a {
   bottom: 8px;
 }
 .persons .bajista1 {
-  max-height: 95%;
+  max-height: 75%;
 }
 .persons .bajista2 {
-  max-height: 95%;
+  max-height: 75%;
 }
 .persons .bajista3 {
-  max-height: 100%;
+  max-height: 80%;
 }
 .persons .batero1 {
-  max-height: 70%;
+  max-height: 50%;
 }
 .persons .batero3 {
-  max-height: 75%;
+  max-height: 55%;
 }
 .persons .cantante1 {
-  max-height: 90%;
+  max-height: 70%;
 }
 .persons .cantante2 {
-  max-height: 75%;
+  max-height: 55%;
 }
 .persons .cantante3 {
-  max-height: 67%;
+  max-height: 47%;
 }
 .piracy {
   position: absolute;

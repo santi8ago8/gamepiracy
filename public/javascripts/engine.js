@@ -85,6 +85,7 @@ var Game = function () {
     };
     var initIntro = function () {
         content.qs('.start').show();
+        content.qs('.time').hide();
         content.f().addEventListener('click', startListener);
     };
     var startListener = function () {
@@ -93,6 +94,7 @@ var Game = function () {
     var initGame = function () {
         step = 0;
         content.qs('.start').hide();
+        content.qs('.time').show();
         content.f().removeEventListener('click', startListener);
 
         currentPiracy = 100;

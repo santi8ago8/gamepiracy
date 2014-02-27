@@ -8,6 +8,22 @@ body {
   -ms-user-select: none;
   user-select: none;
 }
+img,
+h2 {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+::selection {
+  color: #f00;
+  background: #ff0;
+}
+::-moz-selection {
+  color: #f00;
+  background: #ff0;
+}
 a {
   color: #00b7ff;
 }
@@ -18,6 +34,11 @@ a {
   right: 0px;
   bottom: 0px;
   overflow: hidden;
+}
+.content h2.time {
+  color: #fff;
+  font-size: 1.3em;
+  text-align: center;
 }
 .contentLoaded {
   background-image: url("/images/fondo_.jpg");
@@ -35,18 +56,31 @@ a {
 .persons img {
   position: absolute;
   transition: left 100ms;
+  bottom: 8px;
 }
 .persons .bajista1 {
   max-height: 95%;
-  bottom: 8px;
+}
+.persons .bajista2 {
+  max-height: 95%;
+}
+.persons .bajista3 {
+  max-height: 100%;
 }
 .persons .batero1 {
+  max-height: 70%;
+}
+.persons .batero3 {
   max-height: 75%;
-  bottom: 10px;
 }
 .persons .cantante1 {
-  max-height: 96%;
-  bottom: 10px;
+  max-height: 90%;
+}
+.persons .cantante2 {
+  max-height: 75%;
+}
+.persons .cantante3 {
+  max-height: 67%;
 }
 .piracy {
   position: absolute;

@@ -34,16 +34,18 @@ Boq.utils.qs.adds.css = function (name, value) {
     return this;
 };
 Boq.utils.qs.adds.hide = function () {
-    this.each(function (it) {
-        it.style.display = 'none';
-    });
-    return this;
+    return this.adds.css.call(this, 'display', 'none');
 };
 Boq.utils.qs.adds.show = function () {
-    this.each(function (it) {
-        it.style.display = '';
+    return this.adds.css.call(this, 'display', '');
+};
+Boq.utils.qs.adds.remove = function () {
+    return this.each(function (it) {
+        if (it.remove) it.remove();
+        else {
+            it.remove();
+        }
     });
-    return this;
 };
 
 var Game = function () {
@@ -58,10 +60,11 @@ var Game = function () {
     var templatePerson = jade.compile(b.u.qs('#person1').html());
     var step = 0;
     var anchoW = 0;
-    var anchoCantante = 0;
+    var time;
     var cantante;
     var bajista;
     var batero;
+    var todos;
 
     var resizeWindow = function () {
         anchoW = content.f().offsetWidth;
@@ -100,16 +103,18 @@ var Game = function () {
 
         intPiracy.push(setInterval(function () {
             decrement -= .3;
-        }, 1000));
+        }, 1300));
         intPiracy.push(setInterval(movePiracy, 100));
         content.f().addEventListener('click', backPiracy);
 
         content.qs('.persons').html(templatePerson());
 
+        time = content.qs('.time');
         cantante = content.qs('.cantante');
         bajista = content.qs('.bajista');
         batero = content.qs('.batero');
-
+        todos = content.qs('.persons img');
+        updateMusicians();
         initDate = Date.now();
     };
     var movePiracy = function () {
@@ -122,10 +127,17 @@ var Game = function () {
         }
         content.f().removeEventListener('click', backPiracy);
         piracy.css('right', '100%');
+        content.qs('.persons').html('<img src="/images/banda5.png">');
+        var image = content.qs('.persons img');
+        image.css('bottom', '0px');
+        image.css('maxHeight', '80%');
+        setTimeout(function () {
+            image.css('left', (anchoW / 2 - (image.f().offsetWidth) / 2) + "px");
+        }, 100);
         b.u.debug('end', finalScore);
     };
     var backPiracy = function () {
-        updatePiracy(decclick);
+        currentPiracy += decclick;
     };
     var updatePiracy = function (n) {
         currentPiracy += n;
@@ -136,14 +148,21 @@ var Game = function () {
                 currentPiracy = 99;
             piracy.css('right', currentPiracy + '%');
         }
+        setTextValue();
         updateMusicians();
     };
+
+    var setTextValue = function () {
+        var finalScore = Date.now() - initDate;
+        time.html(b.u.format('%0% s', (finalScore / 1000).toFixed(1)));
+    };
+
     var updateMusicians = function () {
 
         var restScreen = anchoW - (anchoW * ((100 - currentPiracy) / 100));
         var piracyScreen = anchoW - restScreen;
 
-        if (currentPiracy > 75) {
+        if (currentPiracy > 80) {
             //completos
 
 
@@ -156,13 +175,16 @@ var Game = function () {
             var anchoBatero = batero.f().offsetWidth;
             batero.css('left', (piracyScreen + (restScreen / 1.5)) - (anchoBatero / 2) + 'px');
 
-        } else if (currentPiracy > 40) {
+        } else if (currentPiracy > 50) {
             //mirando costado
             if (step != 2) {
                 step = 2;
                 cantante.f().src = '/images/cantante2.png';
+                cantante.f().classList.remove('cantante1');
+                cantante.f().classList.add('cantante2');
                 bajista.f().src = '/images/bajista2.png';
-
+                bajista.f().classList.remove('bajista1');
+                bajista.f().classList.add('bajista2');
             }
 
             var anchoCantante = cantante.f().offsetWidth;
@@ -179,17 +201,20 @@ var Game = function () {
             if (step != 3) {
                 step = 3;
 
-                // cantante.f().src = '/images/cantante3.png';
-                // bajista.f().src = '/images/bajista2.png';
+                cantante.f().src = '/images/cantante3.png';
+                cantante.f().classList.remove('cantante2');
+                cantante.f().classList.add('cantante3');
+
+                bajista.f().src = '/images/bajista3.png';
+                bajista.f().classList.remove('bajista2');
+                bajista.f().classList.add('bajista3');
+
+                batero.f().src = '/images/batero3.png';
+                batero.f().classList.remove('batero2');
+                batero.f().classList.add('batero3');
             }
-            var anchoCantante = cantante.f().offsetWidth;
-            cantante.css('left', piracyScreen + 'px');
 
-            var anchoBajista = bajista.f().offsetWidth;
-            bajista.css('left', (piracyScreen + (restScreen / 2.5)) + 'px');
-
-            var anchoBatero = batero.f().offsetWidth;
-            batero.css('left', (piracyScreen + (restScreen / 1.5)) + 'px');
+            todos.css('left', piracyScreen + 'px');
 
         }
 

@@ -1,6 +1,7 @@
 /**
  * User: santi8ago8
  * GitHub: https://github.com/santi8ago8/gamepiracy
+ * Descargar ilegalmente esta en tus manos, que ellos sigan tocando es tu decisión.
  */
 
 Boq.utils.qs.adds.html = function (html) {
@@ -95,6 +96,7 @@ var Game = function () {
         step = 0;
         content.qs('.start').hide();
         content.qs('.time').show();
+        content.qs('.slogan').hide();
         content.f().removeEventListener('click', startListener);
 
         currentPiracy = 100;
@@ -108,7 +110,7 @@ var Game = function () {
         }, 1300));
         intPiracy.push(setInterval(movePiracy, 100));
         content.f().addEventListener('click', backPiracy);
-
+        content.qs('.piracy h2').html('');
         content.qs('.persons').html(templatePerson());
 
         time = content.qs('.time');
@@ -133,9 +135,16 @@ var Game = function () {
         var image = content.qs('.persons img');
         image.css('bottom', '0px');
         image.css('maxHeight', '80%');
-        setTimeout(function () {
-            image.css('left', (anchoW / 2 - (image.f().offsetWidth) / 2) + "px");
+        var intimagen = setInterval(function () {
+            var imgancho = image.f().offsetWidth;
+            if (imgancho>10){
+                clearInterval(intimagen);
+                image.css('left', (anchoW / 2 - (imgancho) / 2) + "px");
+
+            }
         }, 100);
+        content.qs('.slogan').show();
+        content.qs('.time').html('');
         b.u.debug('end', finalScore);
     };
     var backPiracy = function () {
@@ -144,7 +153,7 @@ var Game = function () {
     var updatePiracy = function (n) {
         currentPiracy += n;
         if (currentPiracy < 0) {
-            end();
+          
         } else {
             if (currentPiracy > 100)
                 currentPiracy = 99;
@@ -152,6 +161,9 @@ var Game = function () {
         }
         setTextValue();
         updateMusicians();
+        if (currentPiracy<0) {
+            end();
+        }
     };
 
     var setTextValue = function () {
@@ -214,6 +226,8 @@ var Game = function () {
                 batero.f().src = '/images/batero3.png';
                 batero.f().classList.remove('batero2');
                 batero.f().classList.add('batero3');
+
+                content.qs('.piracy').html('<h2>Descargar ilegalmente esta en tus manos</h2>');
             }
 
             todos.css('left', piracyScreen + 'px');

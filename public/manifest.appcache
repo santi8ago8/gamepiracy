@@ -16,3 +16,4 @@ CACHE MANIFEST
 # Resources that require the user to be online.
 NETWORK:
 *
+master

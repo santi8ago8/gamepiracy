@@ -8,13 +8,13 @@
     img(src='/images/click.png')
 h2.time
 h2.slogan(style='display:none') Que ellos sigan tocando es tu decisión
+.piracy
+span.persons
 .end
     h3.record
     h3.playagain Jugar de nuevo
     h3.share
         img(src='/images/share.png')
-.piracy
-span.persons
 </script>
 
 <script type='text/template' id="person1" >

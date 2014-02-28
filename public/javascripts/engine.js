@@ -82,12 +82,17 @@ var Game = function () {
         piracy = content.qs('.piracy');
 
         initIntro();
-
+        content.qs('.end h3.playagain').f().addEventListener('click', initIntro);
     };
     var initIntro = function () {
+        content.qs('.end').hide();
         content.qs('.start').show();
         content.qs('.time').hide();
-        content.f().addEventListener('click', startListener);
+        content.qs('.persons').html('');
+        content.qs('.slogan').hide();
+        setTimeout(function () {
+            content.f().addEventListener('click', startListener);
+        },1);
     };
     var startListener = function () {
         initGame();
@@ -98,7 +103,7 @@ var Game = function () {
         content.qs('.time').show();
         content.qs('.slogan').hide();
         content.f().removeEventListener('click', startListener);
-
+        decrement = -.3;
         currentPiracy = 100;
         while (i = intPiracy.pop()) {
             clearInterval(i);
@@ -137,7 +142,7 @@ var Game = function () {
         image.css('maxHeight', '80%');
         var intimagen = setInterval(function () {
             var imgancho = image.f().offsetWidth;
-            if (imgancho>10){
+            if (imgancho > 10) {
                 clearInterval(intimagen);
                 image.css('left', (anchoW / 2 - (imgancho) / 2) + "px");
 
@@ -146,6 +151,11 @@ var Game = function () {
         content.qs('.slogan').show();
         content.qs('.time').html('');
         b.u.debug('end', finalScore);
+        var end = content.qs('.end');
+        end.qs('.share').attr('onclick', b.u.format('FB.share("%0%")', 'http://gamepiracy.herokuapp.com/record/' + finalScore));
+        end.qs('h3.record').html(b.u.format('Tiempo %0% segundos', (finalScore / 1000).toFixed(1)));
+
+        end.show();
     };
     var backPiracy = function () {
         currentPiracy += decclick;
@@ -153,7 +163,7 @@ var Game = function () {
     var updatePiracy = function (n) {
         currentPiracy += n;
         if (currentPiracy < 0) {
-          
+
         } else {
             if (currentPiracy > 100)
                 currentPiracy = 99;
@@ -161,7 +171,7 @@ var Game = function () {
         }
         setTextValue();
         updateMusicians();
-        if (currentPiracy<0) {
+        if (currentPiracy < 0) {
             end();
         }
     };

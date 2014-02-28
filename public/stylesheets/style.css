@@ -46,8 +46,29 @@ a {
   color: #fff;
   text-align: center;
 }
+.end {
+  position: absolute;
+  right: 0;
+  top: 30%;
+  color: #fff;
+  text-align: center;
+}
+.end h3,
+.end h3.record {
+  padding: 10px;
+  font-size: 1.5em;
+  margin: 0px;
+}
+.end h3.playagain,
+.end h3.share {
+  cursor: hand;
+  cursor: pointer;
+}
+.end p.share {
+  text-align: center;
+}
 .delete {
-  width: 10px;
+  width: 1px;
 }
 .contentLoaded {
   background-image: url("/images/fondo_.jpg");
